@@ -4,11 +4,11 @@ def get_table(file)
   keys = []
   File::open(file).each_line do |line|
     if flag
-        keys = line.split(',').map(&:strip)
-        flag = false
+      keys = line.split(',').map(&:strip)
+      flag = false
     else
-        items = line.split(',')
-        hashed.push Hash[keys.zip(items)]
+      items = line.split(',')
+      hashed.push Hash[keys.zip(items)]
     end
   end
   hashed
@@ -18,7 +18,7 @@ def find_max(hash, arg)
   max = hash[0][arg]
   hash.each do |item|
     if item[arg].size > max.size
-        max = item[arg]
+      max = item[arg]
     end
   end
   max.size
@@ -70,9 +70,9 @@ def main(file)
     valid = false
     query = option.split().map{ |item| item.chomp(",")}
     if query[0].downcase == 'select' and not query.map(&:downcase).include? "limit"
-        query.shift
-        select(query, hash)
-        valid = true
+      query.shift
+      select(query, hash)
+      valid = true
     end
     if query.map(&:downcase).include? "limit"
       limit = query[-1]
